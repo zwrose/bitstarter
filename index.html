@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>onelist - Simple, powerful shopping.</title>
-    <meta name="viewport" content="width-device-width, initial-scale-1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap-combined.no-icons.min.css">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css">
     <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fsocial-buttons.css">
@@ -64,6 +64,9 @@
       }
       .navbar a {
         font-family: Muli, Helvetica, Arial, sans-serif;
+      }
+      .affix, .navbar-fixed-top{
+        -webkit-transform: scale3d(1,1,1);
       }
 
       /* Video pitch and Action */
@@ -147,11 +150,11 @@
 	    <span class="icon-bar"></span>
 	    <span class="icon-bar"></span>
 	  </button>
-	  <a class="brand" href="#">onelist bitstarter</a>
+	  <a class="brand" href="http://theonelist.co">onelist bitstarter</a>
 	  <div class="nav-collapse collapse">
 	    <ul class="nav">
-	      <li class="active"><a href="#">home</a></li>
-	      <li><a href="#about">about</a></li>
+	      <li class="active"><a href="#">contribute</a></li>
+	      <li><a href="#details">details</a></li>
 	      <li><a href="#FAQ">faq</a></li>
 	      <li><a href="#contact">contact</a></li>
 	    </ul>
@@ -163,7 +166,7 @@
     <!-- We use row-fluid inside containers to achieve a resizable layout -->
     <!-- blogs.endjin.com/2013/04/tips-for-implementing-responsive-designs-using-bootstrap/ -->
     <!-- http://stackoverflow.com/a/12270322 -->
-    <div class="container">
+    <div class="container" id="contribute">
       <!-- font and paired font of .heading/.subheading and body from Google Fonts -->
       <!-- www.google.com/fonts/specimen/Ubuntu -->
       <!-- www.google.com/fonts/specimen/Ubuntu#pairings -->
@@ -253,7 +256,7 @@
       <!-- https://develpper.mozilla.org/en-US/docs/Web/CSS/text-align -->
       <!-- http://twitter.github.io/bootstrap/base-css.html#images -->
       <!-- http://placehold.it -->
-      <div class="row-fluid section1">
+      <div class="row-fluid section1" id="details">
 	<div class="span5 offset1 copy">
 	  <p>
 	    Everything in our world today is getting smarter. Our
@@ -322,7 +325,7 @@
       <!-- for the FAQ we introduce a little bit of JS, using the accordion -->
       <!-- This brings in jquery.js and bootstrap.js as dependencies. -->
       <!-- http://twitter.github.io/bootstrap/javascript.html#collapse -->
-      <div class="row-fluid faq">
+      <div class="row-fluid faq" id="FAQ">
 	<div class="span10 offset1">
 	  <h3>FAQ</h3>
 	  <div class="accordion" id="accordion2">
@@ -354,7 +357,9 @@
 	    </div>
 	  </div>
 	</div>
+	<div id="contact">
 
+	</div>
       </div>
 
       <!-- Not crucial, but we put this under a CC By-SA 3.0 license -->
@@ -369,6 +374,25 @@
 	</div>
       </div>
     </div>
+    <script type="text/javascript">
+        $(document).ready( function(){
+        $('.navbar li').click(function(e) {
+        $('.navbar li').removeClass('active');
+        var $this = $(this);
+        if (!$this.hasClass('active')) {
+        $this.addClass('active');
+        }
+//        e.preventDefault(); //this keeps from going to link
+        });});
+
+        
+        $(window).on('hashchange', function(){
+        if (location.hash) {
+        $('body').animate({scrollTop: $(location.hash).offset().top - $('.navbar').outerHeight(true)*0.5 }, 1);
+        }
+        });
+        $(document).ready(function(){$(window).trigger('hashchange')});
+    </script>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
